@@ -1,0 +1,28 @@
+Abaixo estão as quatro operações CRUD e suas rotas para obter o recurso de um livro que está no estoque de uma livraria:
+1 - Create(Criar): Adiciona um novo livro no estoque da livraria.
+Rota: POST /book
+Exemplo do corpo da requisição: 
+
+{
+    "name": "Ahsoka",
+    "author": "E.K.Johnston",
+    "isbn": "9781537957913"
+}
+
+2 - Read(Leitura): Retorna informações sobre um livro específico.
+Rota: GET /book/id 
+Exemplo: GET /book/1
+
+3 - Update(Atualização): Atualiza as informações de um livro específico já existente no estoque da livraria.
+Rota: PUT /book/id
+Exemplo do corpo da requisição: 
+
+{
+    "name": "Star Wars: Ahsoka",
+    "author": "E.K.Johnston",
+    "isbn": "9781537957913"
+}
+
+4 - Delete(Apagar): Apaga um livro específico do estoque da livraria.
+Rota: DELETE /book/id
+Exemplo: DELETE /book/1

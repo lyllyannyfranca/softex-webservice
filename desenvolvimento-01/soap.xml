@@ -1,0 +1,34 @@
+Requisição de Vingadores
+
+<!--Primeiramente é passado no corpo da requisição o id do recurso que deseja buscar-->
+
+Post / consultaVingador HTTP/1.1
+Host: www.shield.org 
+content-Type: application/soap+xml; charset=utf-8 
+content-Lenght: nnn 
+
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+<soap:Body xmlns:m="http://www.shield.org/consulta">
+<m:consultaRequest>
+    <m:id>01</m:id>
+</m:consultaRequest>
+</soap:Body>
+</soap:Envelope>
+
+<!--Durante a resposta, o recurso busca as informações correspondentes ao dado passado na requisição e o trás no corpo da resposta -->
+
+Resposta
+HTTP/1.1 200 ok
+content-Type: application/soap+xml; charset=utf-8 
+content-Lenght: nnn 
+
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+<soap:Body xmlns:m="http://www.shield.org/consulta">
+<m:consultaResponse>
+    <m:nome>Tony Stark</m:nome>
+    <m:codinome>Homem de Ferro</m:codinome>
+</m:consultaResponse>
+</soap:Body>
+</soap:Envelope>

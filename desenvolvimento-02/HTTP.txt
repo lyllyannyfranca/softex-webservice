@@ -1,0 +1,98 @@
+Os métodos HTTP são:
+
+-GET: A mais comum das requisições, onde através dela é solicitado ao servidor uma representação de um recurso que pode ser um arquivo html, xml, json, etc.
+Exemplo:
+
+GET /desenvolvimento-02/ HTTP/1.1  
+User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)  
+Host: http://desenvolvimento02.com.br  
+Connection: Keep-Alive  
+
+-HEAD: Esse método solicita os cabeçalhos retornados de um recurso específico que foi requisitado por um método HTTP GET. Tal solicitação pode ser feita antes de baixar um grande recurso para economizar largura de banda, por exemplo.
+Exemplo: 
+HEAD /echo/head/json HTTP/1.1
+  Accept: application/json
+  Host: reqbin.com
+
+-POST: Esse método envia dados ao servidor. O tipo do corpo da solicitação é indicado pelo cabeçalho Content-Type.
+Exemplo:
+POST / HTTP/1.1
+Host: foo.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 13
+
+say=Hi&to=Mom
+
+-PUT: Esse método cria um novo recurso ou subsititui uma representação do recurso de destino com os novos dados.
+Exemplo:
+PUT /new.html HTTP/1.1
+Host: example.com
+Content-type: text/html
+Content-length: 16
+
+<p>New File</p>
+
+-DELETE: Esse método remove o recurso especificado.
+Exemplo:
+DELETE /arquivo.html HTTP/1.1
+
+-CONNECT: Esse método começa a comunicação bidirecional com o recurso solicitado. Ele pode ser usado para abrir um túnel. Por exemplo, o método CONNECT pode ser utilizado para acessar websites que usam SSL (en-US) (HTTPS). O cliente solicita a um servidor proxy HTTP que tunelize a conexão TCP para o destino desejado. O servidor então procede para fazer a conexão em nome do cliente. Uma vez que a conexão foi estabelecida pelo servidor, o servidor Proxy continua a proxy do fluxo TCP para e do cliente.
+Exemplo:
+CONNECT server.exemplo.com:80 HTTP/1.1
+Host: server.exemplo.com:80
+Proxy-Authorization: basic aGVsbG86d29ybGQ=
+
+-OPTIONS: Esse método é utilizado para que um cliente possa descobrir quais as opções de requisição permitidas para um determinado recurso em um servidor. O cliente pode especificar uma URL específica no método OPTIONS ou um asterisco(*) indicando que se refere ao servidor como um todo para sanar suas dúvidas em relação as opções de requisição permitidas.
+Exemplo:
+curl -X OPTIONS http://example.org -i
+
+-TRACE: Esse método realiza um teste de loopback enviando uma mensagem por todo o caminho até o recurso alvo no qual foi destinado, provendo um mecanismo útil para debug. O destinatário final deve responder a mensagem recebida, excluindo alguns campos descritos abaixo, de volta para o client com um status code 200 (OK) e um cabeçalho Content-Type. O destinatário final pode ser o servidor de origem ou o primeiro servidor a receber a requisição com o cabeçalho Max-Forwards (en-US) com valor 0.
+Exemplo:
+$ telnet 127.0.0.1 8080
+Trying...
+Connected to 127.0.0.1.
+Escape character is '^]'.
+TRACE / HTTP/1.0
+Host: foo
+A: b
+C: d
+
+HTTP/1.1 200 OK
+Date: Mon, 04 Oct 2004 14:07:59 GMT
+Server: IBM_HTTP_SERVER
+Connection: close
+Content-Type: message/http
+
+TRACE / HTTP/1.0
+A: b
+C: d
+Host: foo
+
+Connection closed.
+
+-PATCH: Esse método aplica modificações parciais a um recurso. Enquanto o método PUT permite apenas substituições completas de um documento, o método PATCH não é idempotente, ou seja, requisições sucessivas idênticas podem obter efeitos distintos. Todavia, é possível realizar requisições PATCH de modo a serem idempotentes. PATCH (assim como PUT) podem ter efeitos colaterais em outros recursos. Para descobrir se um servidor dá suporte a PATCH, um servidor pode divulgar seu suporte adicionando tal suporte à lista no cabeçalho de resposta HTTP Allow ou Access-Control-Allow-Methods (para CORS). Outra indicação (implícita) da permissão de PATCH é a presença do cabeçalho Accept-Patch, que especifica o formato do documento patch aceito pelo servidor.
+Exemplo:
+PATCH /file.txt HTTP/1.1
+Host: www.example.com
+Content-Type: application/example
+If-Match: "e0023aa4e"
+Content-Length: 100
+
+----------------------------------------------------------------
+
+Web Services Description Language(WSDL):
+
+WSDL é um a descrição em formato XML de um Web Service que utilizará SOAP / RPC como protocolo. É o acrônimo de Web Services Description Language (Linguagem de Descrição de Serviços Web).
+
+RPC – Remote Procedure Calls (em português, chamada de procedimentos remotos) é um modelo que define a forma como são realizadas as chamadas a operações remotas através de web services.
+
+Por meio de um WSDL é possível informar ao cliente como cada serviço em um end-point deve ser invocado: quais os parâmetros e tipo de dados de cada parâmetro é esperado, e qual o tipo de dado do retorno será enviado como resposta. Além de descrever cada serviço (que pode ser comparado à um método a ser executado no programa servidor), também descreve como podem ser encontrados. 
+
+Seus elementos básicos são:
+
+- <types>: aqui deverão ser descritos os tipos de dados suportados pelo serviço em questão;
+- <message>: aqui devem ser especificados os padrões de entrada e saída de dados dos web services;
+- <portType>: aqui devem ser descritos os agrupamentos lógicos das operações. São as operações executadas pelo web service;
+- <binding>: aqui devem ser apresentados os protocolos de comunicação que os web services utilizam;
+- <operation>: região que permite a especificação das assinaturas dos métodos disponibilizados;
+- <definitions>: elemento padrão de todos os documentos WSDL. Permite efetuar descrições sobre schemas e namespaces.
