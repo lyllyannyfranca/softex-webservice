@@ -1,0 +1,32 @@
+{
+  "alunos": [
+    {
+      "id": 1,
+      "nome": "Glória",
+      "serie": "2° ano",
+      "nota": 9.8,
+      "aprovado": true
+    },
+    {
+      "id": 2,
+      "nome": "Sérgio",
+      "serie": "2° ano",
+      "nota": 9.1,
+      "aprovado": true
+    },
+    {
+      "id": 3,
+      "nome": "Cláudia",
+      "serie": "6° ano",
+      "nota": 8.5,
+      "aprovado": true
+    },
+    {
+      "id": 4,
+      "nome": "Gabriel",
+      "serie": "6° ano",
+      "nota": 5.5,
+      "aprovado": false
+    }
+  ]
+}
